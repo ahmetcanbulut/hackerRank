@@ -1,3 +1,4 @@
+// Huffman Coding - HackerRank
 /*  
    class Node
       public  int frequency; // the frequency of this tree
