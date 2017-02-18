@@ -1,4 +1,4 @@
-// Binary Search Tree Insertion 
+// Binary Search Tree Insertion - HackerRank
 /* Node is defined as :
  class Node 
     int data;
