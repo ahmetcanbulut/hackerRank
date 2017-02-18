@@ -1,4 +1,4 @@
-// Algorithmic Crush
+// Algorithmic Crush - HackerRank
 import java.io.*;
 import java.util.*;
 
