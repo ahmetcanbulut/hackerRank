@@ -1,4 +1,5 @@
- /* Node is defined as :
+// Binary Search Tree Insertion 
+/* Node is defined as :
  class Node 
     int data;
     Node left;
