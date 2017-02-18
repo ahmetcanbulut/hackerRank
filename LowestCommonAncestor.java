@@ -1,4 +1,5 @@
- /* Node is defined as :
+// Lowest Common Ancestor - HackerRank 
+/* Node is defined as :
  class Node 
     int data;
     Node left;
