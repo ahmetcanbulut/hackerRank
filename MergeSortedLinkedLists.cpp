@@ -1,4 +1,4 @@
-// Merge Sort Linked List - HackerRank
+// Merge Two Sorted Linked List - HackerRank
 /*
   Merge two sorted lists A and B as one linked list
   Node is defined as 
