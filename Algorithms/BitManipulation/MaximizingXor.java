@@ -1,3 +1,5 @@
+// Maximizing XOR - HackerRank
+
 import java.io.*;
 import java.util.*;
 
