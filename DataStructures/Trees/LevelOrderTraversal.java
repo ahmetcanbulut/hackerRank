@@ -1,4 +1,5 @@
-// Level Order Traversal - HackerRank   
+// Easy
+// Level Order Traversal - HackerRank / Data Structures / Trees
 /* 
     
     class Node 
