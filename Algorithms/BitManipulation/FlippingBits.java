@@ -17,19 +17,16 @@ public class Solution {
         return result;
     }
 
-    public static long flipLong(long num){
-        long xorMask = generateXorMask(32);  // 32 bit unsigned int
-        return num^xorMask;
-    }
-
     public static void main(String[] args) {
         /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
         Scanner sc = new Scanner(System.in);
         int count = sc.nextInt();
         
+        long mask = generateXorMask(32);
+        
         for(int i=0;i<count;i++){
             long cur = sc.nextLong();
-            long result = flipLong(cur);
+            long result = cur^mask;
             System.out.println(result);
         }
     }
