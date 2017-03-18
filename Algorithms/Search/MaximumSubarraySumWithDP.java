@@ -2,73 +2,47 @@
 // Maximum Subarray Sum - HackerRank / Algorithms / Search
 // Only works for some inputs, gets time out (not the best solution)
 
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
 public class Solution {
-    // Fibonacci with Recursion
-    public static int fibRecursive(int n){
-        if(n==0){
-            return 0;  // base case
+    
+    public static void applyDp(Scanner sc) {
+        int elemCount = sc.nextInt();
+        long modulo = sc.nextInt();
+        long curMax = 0;
+        long[][] dp = new long[elemCount][elemCount];
+
+        // diagonal part of dp is given
+        for(int j=0;j<elemCount;j++){
+            int cur = sc.nextInt();
+            dp[j][j] = cur % modulo;
+            if(dp[j][j]>curMax){
+                curMax = dp[j][j];
+            }
         }
-        if(n==1){
-            return 1;  // base case
+
+        // fill the upper half of dp
+        for(int n=1;n<elemCount;n++){
+            int y = n;
+            for(int x=0; x<(elemCount-n); x++, y++){
+                dp[x][y] = (dp[x][y-1] + dp[y][y]) % modulo;
+                if(dp[x][y]>curMax){
+                    curMax = dp[x][y];
+                }
+            }
         }
-        return fibRecursive(n-1) + fibRecursive(n-2); // recurse
+        System.out.println(curMax);
     }
-
-    // Fibonacci with Dynamic Programming - Bottom Up Approach
-    public static int fibDPBottomUp(int n){
-        int[] dp = new int[n+1];
-        // store base cases
-        dp[0] = 0;
-        dp[1] = 1;
-        for(int i=2;i<n+1;i++){
-            // calculate next using prev and store
-            dp[i] = dp[i-1] + dp[i-2];
+    
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int qCount = sc.nextInt();
+        for(int i=0;i<qCount;i++){
+            applyDp(sc);
         }
-        return dp[n];
-    }
-
-    // Fibonacci with Dynamic Programming - Top Down Approach
-    public static int fibDPTopDown(int n){
-        int[] dp = new int[n+1];
-        return fibDPTDRecursive(n,dp);
-    }
-
-    private static int fibDPTDRecursive(int n, int[] dp){
-        if(n==0){
-            return 0;
-        }
-        if(n==1){
-            return 1;
-        }
-        if(dp[n]!=0){
-            // if it is already calculated, return
-            return dp[n];
-        }else{
-            // if it is not calculated, calculate, store and return
-            dp[n] = fibDPTDRecursive(n-1,dp) + fibDPTDRecursive(n-2,dp);
-            return dp[n];
-        }
-    }
-
-    public static void main(String[] args){
-        int n = 45;
-        long start = 0;
-        long end = 0;
-
-        start = System.currentTimeMillis();
-        long fibRec = fibRecursive(n);
-        end = System.currentTimeMillis();
-        System.out.println("Fib " + n + " Recursive: " + fibRec + " in " + (end - start) + " ms");
-
-        start = System.currentTimeMillis();
-        long fibDPBU = fibDPBottomUp(n);
-        end = System.currentTimeMillis();
-        System.out.println("Fib " + n + " DP Bottom Up: " + fibDPBU + " in " + (end - start) + " ms");
-
-        start = System.currentTimeMillis();
-        long fibDPTD = fibDPTopDown(n);
-        end = System.currentTimeMillis();
-        System.out.println("Fib " + n + " DP Top Down: " + fibDPTD + " in " + (end - start) + " ms");
-
     }
 }
