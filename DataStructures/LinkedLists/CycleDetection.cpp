@@ -1,4 +1,3 @@
-// Cycle Detection - HackerRank
 /*
 Detect a cycle in a linked list. Note that the head pointer may be 'NULL' if the list is empty.
 
@@ -10,15 +9,14 @@ A Node is defined as:
 */
 
 bool has_cycle(Node* head) {
+    // Complete this function
+    // Do not write the main method
     if(head == NULL){
         return false;
     }
     Node* slow = head;
     Node* fast = head;
-    for(int i=0;i<200;i++){
-        if(slow->next == NULL || fast->next->next == NULL){
-            return false;
-        }
+    while(slow != NULL && fast != NULL){
         slow = slow->next;
         fast = fast->next->next;
         if(slow == fast){
